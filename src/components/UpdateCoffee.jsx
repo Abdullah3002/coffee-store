@@ -33,7 +33,7 @@ const UpdateCoffee = () => {
 
     // send data to the server
     fetch(
-      `https://coffee-store-server-qsqe2uwgr-zubaers-projects.vercel.app//coffee/${_id}`,
+      `https://coffee-store-server-qsqe2uwgr-zubaers-projects.vercel.app/coffee/${_id}`,
       {
         method: "PUT",
         headers: {

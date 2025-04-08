@@ -20,7 +20,7 @@ function App() {
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(
-          `https://coffee-store-server-qsqe2uwgr-zubaers-projects.vercel.app//coffee/${_id}`,
+          `https://coffee-store-server-qsqe2uwgr-zubaers-projects.vercel.app/coffee/${_id}`,
           {
             method: "DELETE",
           }

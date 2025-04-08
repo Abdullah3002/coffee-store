@@ -19,7 +19,7 @@ const SignIn = () => {
         };
         // updated last logged at in the database
         fetch(
-          "https://coffee-store-server-qsqe2uwgr-zubaers-projects.vercel.app//user",
+          "https://coffee-store-server-qsqe2uwgr-zubaers-projects.vercel.app/user",
           {
             method: "PATCH",
             headers: {
