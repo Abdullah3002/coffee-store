@@ -1,8 +1,8 @@
-import { useState } from 'react'
-import './App.css'
-import { Link, useLoaderData } from 'react-router-dom'
-import CoffeeCard from './components/coffeeCard'
-import Swal from 'sweetalert2'
+import { useState } from "react";
+import "./App.css";
+import { Link, useLoaderData } from "react-router-dom";
+import CoffeeCard from "./components/coffeeCard";
+import Swal from "sweetalert2";
 
 function App() {
   const loadedCoffees = useLoaderData();
@@ -19,9 +19,12 @@ function App() {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5003/coffee/${_id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://coffee-store-server-qsqe2uwgr-zubaers-projects.vercel.app//coffee/${_id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
@@ -36,29 +39,35 @@ function App() {
 
   return (
     <>
-      <h2 className='text-xl font-bold text-orange-500'>Hot hot cold coffee: {coffees.length} ☕</h2>
-      
-      <div className='space-y-6 space-x-4 pt-4'>
-        <Link to="/addcoffee"><button className="btn btn-primary">Add Coffee</button></Link>
-        <Link to="/signup"><button className="btn btn-primary">SignUp</button></Link>
-        <Link to="users"><button className="btn btn-primary">Users</button></Link>
+      <h2 className="text-xl font-bold text-orange-500">
+        Hot hot cold coffee: {coffees.length} ☕
+      </h2>
+
+      <div className="space-y-6 space-x-4 pt-4">
+        <Link to="/addcoffee">
+          <button className="btn btn-primary">Add Coffee</button>
+        </Link>
+        <Link to="/signup">
+          <button className="btn btn-primary">SignUp</button>
+        </Link>
+        <Link to="users">
+          <button className="btn btn-primary">Users</button>
+        </Link>
       </div>
 
-      <div className='grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 pt-4'>
-        {
-          coffees.map(coffee => (
-            <CoffeeCard 
-              key={coffee._id} 
-              coffee={coffee} 
-              coffees={coffees}
-              setCoffees={setCoffees}
-              handleDelete={handleDelete} 
-            />
-          ))
-        }
+      <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 pt-4">
+        {coffees.map((coffee) => (
+          <CoffeeCard
+            key={coffee._id}
+            coffee={coffee}
+            coffees={coffees}
+            setCoffees={setCoffees}
+            handleDelete={handleDelete}
+          />
+        ))}
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

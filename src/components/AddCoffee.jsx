@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 const AddCoffee = () => {
   const handleAddCoffee = (event) => {
@@ -14,37 +14,54 @@ const AddCoffee = () => {
     const details = form.details.value;
     const photo = form.photo.value;
 
-    const newCoffee = {name,quantity,supplier,price,category,details,photo}
+    const newCoffee = {
+      name,
+      quantity,
+      supplier,
+      price,
+      category,
+      details,
+      photo,
+    };
     console.log(newCoffee);
 
-    // send data to the server 
-    fetch('http://localhost:5003/coffee',{
-        method:'POST',
-        headers:{
-            'content-type':'application/json'
+    // send data to the server
+    fetch(
+      "https://coffee-store-server-qsqe2uwgr-zubaers-projects.vercel.app//coffee",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
         },
-        body:JSON.stringify(newCoffee)
-    })
-    .then(res => res.json())
-    .then(data => {
-        if(data.insertedId){
-            Swal.fire({
-                title:'Success',
-                text: 'User Added Successfully',
-                icon:'Success',
-                confirmButtonText:'Cool'
-            })
+        body: JSON.stringify(newCoffee),
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success",
+            text: "User Added Successfully",
+            icon: "Success",
+            confirmButtonText: "Cool",
+          });
         }
-    })
-
+      });
   };
   return (
     <div>
-
-     <Link to="/"> <button className="btn btn-primary">Home</button> </Link>
-     <Link to="/updatecoffee"> <button className="btn btn-primary">Update Coffee</button> </Link>
-     <Link to="/coffecard"> <button className="btn btn-primary"> Coffee Card</button> </Link>
-
+      <Link to="/">
+        {" "}
+        <button className="btn btn-primary">Home</button>{" "}
+      </Link>
+      <Link to="/updatecoffee">
+        {" "}
+        <button className="btn btn-primary">Update Coffee</button>{" "}
+      </Link>
+      <Link to="/coffecard">
+        {" "}
+        <button className="btn btn-primary"> Coffee Card</button>{" "}
+      </Link>
 
       <div className="hero bg-base-200 min-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse">
